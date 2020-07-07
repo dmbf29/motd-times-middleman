@@ -1,5 +1,40 @@
+<% html_content = open('https://www.bbc.co.uk/programmes/m0007fnr/episodes/guide.2013inc?nestedlevel=3').read %>
+<% doc = Nokogiri::HTML(html_content) %>
+<% past = [] %>
+<% future = [] %>
+<% doc.search('.episode-guide__episode').each do |element| %>
+  <% date = Date.parse(element.search('.programme__titles').text.strip) %>
+  <% if date > Date.today  %>
+    <% time = element.search('.timezone--time').text.strip %>
+    <% time = Time.parse(time) %>
+    <% dt = DateTime.new(date.year, date.month, date.day, time.hour, time.min, time.sec) %>
+    <% future << dt %>
+  <% else %>
+    <% past << date %>
+  <% end %>
+<% end %>
 <div class="container">
   <div class="row justify-content-center">
-    <h1>Middleman Boilerplate</h1>
+    <h1>MOTD Times</h1>
+  </div>
+  <div class="row justify-content-center">
+    <h4>Upcoming</h4>
+  </div>
+  <div class="row justify-content-center">
+    <ol>
+      <% future.sort.each do |date| %>
+        <li><%= date.strftime('%A, %b %e, %l:%M %p') %></li>
+      <% end %>
+    </ol>
+  </div>
+  <div class="row justify-content-center">
+    <h4>Past</h4>
+  </div>
+  <div class="row justify-content-center">
+    <ol>
+      <% past.sort.reverse.each do |date| %>
+        <li><%= date.strftime('%A, %b %d') %></li>
+      <% end %>
+    </ol>
   </div>
 </div>

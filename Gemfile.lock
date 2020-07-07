@@ -73,7 +73,10 @@ GEM
     middleman-sprockets (4.1.1)
       middleman-core (~> 4.0)
       sprockets (>= 3.0)
+    mini_portile2 (2.4.0)
     minitest (5.10.3)
+    nokogiri (1.10.9)
+      mini_portile2 (~> 2.4.0)
     padrino-helpers (0.13.3.4)
       i18n (~> 0.6, >= 0.6.7)
       padrino-support (= 0.13.3.4)
@@ -88,8 +91,6 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     sass (3.4.21)
-    sass-globbing (1.1.5)
-      sass (>= 3.1)
     servolux (0.13.0)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
@@ -110,7 +111,7 @@ DEPENDENCIES
   middleman (~> 4.2)
   middleman-gh-pages
   middleman-sprockets
-  sass-globbing
+  nokogiri
   tzinfo-data
   wdm (~> 0.1.0)
 
