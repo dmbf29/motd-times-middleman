@@ -1,3 +1,4 @@
+<% require 'active_support/time_with_zone' %>
 <% html_content = open('https://www.bbc.co.uk/programmes/m0007fnr/episodes/guide.2013inc?nestedlevel=3').read %>
 <% doc = Nokogiri::HTML(html_content) %>
 <% past = [] %>
@@ -13,9 +14,15 @@
     <% past << date %>
   <% end %>
 <% end %>
-<div class="container">
+<div class="container mt-4">
   <div class="row justify-content-center">
     <h1>MOTD Times</h1>
+  </div>
+  <div class="row justify-content-center">
+    <%#= select_tag "credit_card", options_for_select([ "VISA", "MasterCard" ], "MasterCard") %>
+    <div class="form-group">
+      <%= select_tag :time_zone, options: ActiveSupport::TimeZone.all.sort, class: 'form-control', id: 'time_zones', selected: ActiveSupport::TimeZone.all.sort[39] %>
+    </div>
   </div>
   <div class="row justify-content-center">
     <h4>Upcoming</h4>
