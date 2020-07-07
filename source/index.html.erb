@@ -19,7 +19,7 @@
     <h1>MOTD Times</h1>
   </div>
   <div class="row justify-content-center">
-    <% timezone = params['timezone'] || ActiveSupport::TimeZone.all.sort[37].to_s  %>
+    <% timezone = rack[:request].params['timezone'] || ActiveSupport::TimeZone.all.sort[37].to_s  %>
     <% timezone = timezone.split('0) ').last %>
     <div class="form-group">
       <%= select_tag :time_zone, options: ActiveSupport::TimeZone.all.sort, class: 'form-control', id: 'time_zones', selected: ActiveSupport::TimeZone.all.find { |tz| tz.name == timezone } %>
