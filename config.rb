@@ -50,6 +50,9 @@
 # Use sprockets for JS requires
 activate :sprockets
 
+
+require 'active_support/time_with_zone'
+require 'active_support/time'
 # Build-specific configuration
 configure :build do
   # For example, change the Compass output style for deployment
