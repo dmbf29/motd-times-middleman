@@ -20,3 +20,4 @@ gem "tzinfo-data", platforms: [:mswin, :mingw]
 gem 'middleman-sprockets'
 
 gem 'nokogiri'
+gem 'pry-byebug'
